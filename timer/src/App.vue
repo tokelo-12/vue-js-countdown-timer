@@ -1,4 +1,29 @@
+<template>
+  <div class="container">
+    <Clock/>
+  </div>
+</template>
+
 <script setup>
+  import Clock from './components/Clock.vue';
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -82,4 +107,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
