@@ -20,7 +20,38 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, defineProps } from 'vue';
+
+    const props = defineProps({
+        year:{
+            type: Number,
+            required: true,
+        },
+        month:{
+            type: Number,
+            required: true,
+        },
+        date:{
+            type: Number,
+            required: true,
+        },
+        hour:{
+            type: Number,
+            required: true,
+        },
+        minute:{
+            type: Number,
+            required: true,
+        },
+        second:{
+            type: Number,
+            required: true,
+        },
+        millisecond:{
+            type: Number,
+            required: true,
+        }
+    })
 
     
     let displayDays = ref(0)
@@ -33,6 +64,15 @@ import { computed, onMounted, ref } from 'vue';
     const _minutes= computed(()=> _seconds.value*60)
     const _hours = computed(()=> _minutes.value*60) 
     const _days = computed(()=> _hours.value*24)
+    const end = computed(()=> new Date(
+        props.year,
+        props.month,
+        props.date,
+        props.hour,
+        props.minute,
+        props.second,
+        props.millisecond,
+        ))
     
     onMounted(()=>{
         showRemaining()
@@ -46,8 +86,8 @@ import { computed, onMounted, ref } from 'vue';
 
         const timer = setInterval(()=>{
             const now = new Date();
-            const end = new Date(2024,0,1,0,0,0,0); //end date at 1st jan 2024 00:00:00:00
-            const distance = end.getTime() - now.getTime();
+            //const end = new Date(2024,0,1,0,0,0,0); //end date at 1st jan 2024 00:00:00:00
+            const distance = end.value.getTime() - now.getTime();
             
             if(distance < 0 ){
                 clearInterval(timer)
@@ -64,6 +104,7 @@ import { computed, onMounted, ref } from 'vue';
             displayMinutes.value = format(minutes);
             displayHours.value = format(hours);
             displayDays.value = format(days);
+            
         }, 1000)
     }
 

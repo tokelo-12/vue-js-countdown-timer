@@ -1,7 +1,14 @@
 <template>
   <div class="container">
     <Header></Header>
-    <Clock/>
+    <Clock
+      :year="2024" 
+      :month="+0" 
+      :date="+1" 
+      :hour="+0" 
+      :minute="+0" 
+      :second="+0" 
+      :millisecond="+0"/>
   </div>
 </template>
 
