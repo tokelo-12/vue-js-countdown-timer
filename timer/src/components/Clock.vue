@@ -1,6 +1,6 @@
 <template>
     <div class="clock-container">
-        <div class="segment-container">
+        <!-- <div class="segment-container">
             <div class="clock">{{displayDays}}</div>
             <div class="label"><h2>Days</h2></div>
         </div>
@@ -15,7 +15,74 @@
         <div class="segment-container">
             <div class="clock">{{displaySeconds}}</div>
             <div class="label"><h2>Seconds</h2></div>
-        </div> 
+        </div> -->
+        
+        <div class="countdown">
+            <div class="time-section" id="days">
+                <div class="time-group">
+                    <div class="time-segment">
+                        <div class="segment-display">
+                            <div class="segment-display-top">{{displayDays}}</div>
+                            <div class="segment-display-bottom">{{displayDays}}</div>
+                            <div class="segment-overlay" :class="{flip: isActive}">
+                                <div class="segment-overlay-top">{{displayDays}}</div>
+                                <div class="segment-overlay-bottom">{{displayDays}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>days</p>
+            </div>
+
+            <div class="time-section" id="hours">
+                <div class="time-group">
+                    <div class="time-segment">
+                        <div class="segment-display">
+                            <div class="segment-display-top">{{displayHours}}</div>
+                            <div class="segment-display-bottom">{{displayHours}}</div>
+                            <div class="segment-overlay" :class="{flip: isActive}">
+                                <div class="segment-overlay-top">{{displayHours}}</div>
+                                <div class="segment-overlay-bottom">{{displayHours}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>hours</p>
+            </div>
+
+            <div class="time-section" id="minutes">
+                <div class="time-group">
+                    <div class="time-segment">
+                        <div class="segment-display">
+                            <div class="segment-display-top">{{displayMinutes}}</div>
+                            <div class="segment-display-bottom">{{displayMinutes}}</div>
+                            <div class="segment-overlay" :class="{flip: isActive}">
+                                <div class="segment-overlay-top">{{displayMinutes}}</div>
+                                <div class="segment-overlay-bottom">{{displayMinutes}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>minutes</p>
+            </div>
+
+
+            <div class="time-section" id="seconds">
+                <div class="time-group">
+                    <div class="time-segment" >
+                        <div class="segment-display">
+                            <div class="segment-display-top">{{displaySeconds.toString().padStart(2, '0')}}</div>
+                            <div class="segment-display-bottom">{{displaySeconds.toString().padStart(2, '0')}}</div>
+                            <div class="segment-overlay" :class="{flip: shouldFlip}">
+                                <div class="segment-overlay-top">{{displaySeconds.toString().padStart(2, '0')}}</div>
+                                <div class="segment-overlay-bottom">{{displaySeconds.toString().padStart(2, '0')}}</div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <p>seconds</p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -58,7 +125,7 @@ import { computed, onMounted, ref, defineProps } from 'vue';
     let displayHours = ref(0)
     let displayMinutes = ref(0)
     let displaySeconds = ref(0)
-
+    let isActive = ref(false)
 
     const _seconds = computed(()=> 1000)
     const _minutes= computed(()=> _seconds.value*60)
@@ -79,10 +146,32 @@ import { computed, onMounted, ref, defineProps } from 'vue';
     })
 
     function format(num){
-        return num < 10 ? "0" + num : num
+            return num.toString().padStart(2,'0');
+        
+    }
+
+    const shouldFlip = (x)=>{
+      return x % 2 === 0; // Toggle on even seconds
     }
     
     const showRemaining = () =>{
+
+        // //update display and overlay elements at the same time
+        // const updateSegmentValues = (overlayElement, displayElement, value)=>{
+        //     displayElement = value;
+        //     overlayElement = value;
+        // }
+
+        // const updateTimeSegment = (segmentElement, timeValue)=>{
+        //     //TODO get access to segmentElement
+            
+        //     //add flip class for animation
+        //     !isActive.value
+
+        //     updateSegmentValues(
+        //         segmentElement
+        //     )
+        // }
 
         const timer = setInterval(()=>{
             const now = new Date();
@@ -99,12 +188,16 @@ import { computed, onMounted, ref, defineProps } from 'vue';
             const minutes = Math.floor((distance % _hours.value)/_minutes.value)
             const seconds = Math.floor((distance % _minutes.value)/_seconds.value)
             
-            //preceding 0 format
-            displaySeconds.value = format(seconds)
+            
+            displaySeconds.value = seconds;
             displayMinutes.value = format(minutes);
             displayHours.value = format(hours);
             displayDays.value = format(days);
-            
+            shouldFlip(displaySeconds)
+            !shouldFlip(displaySeconds)
+            // !isActive.value
+
+
         }, 1000)
     }
 
