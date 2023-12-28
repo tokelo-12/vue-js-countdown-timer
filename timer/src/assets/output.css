@@ -13,15 +13,26 @@ body {
 }
 
 .container {
-  height: 100vh;
+  padding-top: 200px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 375px;
   font-family: "Red Hat Text", sans-serif;
-  border: 2px solid red;
   background-color: hsl(234deg, 17%, 12%);
+  background-image: url(./bg-stars.svg);
+  background-repeat: no-repeat;
+}
+
+.footer {
+  margin-top: auto;
+  height: 170px;
+  width: inherit;
+  background-image: url(./pattern-hills.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h3 {
@@ -78,12 +89,14 @@ h3 {
   background-color: hsl(236deg, 21%, 26%);
   color: hsl(345deg, 95%, 68%);
   line-height: 1.5;
+  border-radius: 5px 5px 0 0;
 }
 
 .segment-display-bottom {
   background-color: hsl(236deg, 21%, 30%);
   color: white;
   line-height: 0;
+  border-radius: 0 0 5px 5px;
 }
 
 .segment-overlay {
@@ -107,6 +120,7 @@ h3 {
   color: hsl(345deg, 95%, 68%);
   background-color: hsl(236deg, 21%, 26%);
   transform-origin: bottom;
+  border-radius: 5px;
 }
 
 .segment-overlay-bottom {
@@ -116,6 +130,7 @@ h3 {
   background-color: hsl(236deg, 21%, 30%);
   border-top: 1px solid black;
   transform-origin: top;
+  border-radius: 0 0 5px 5px;
 }
 
 .segment-overlay.flip .segment-overlay-top {

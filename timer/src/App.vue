@@ -9,12 +9,14 @@
       :minute="+0" 
       :second="+0" 
       :millisecond="+0"/>
+     <Footer></Footer> 
   </div>
 </template>
 
 <script setup>
   import Clock from './components/Clock.vue';
   import Header from './components/Header.vue';
+  import Footer from './components/Footer.vue';
 
 
   
