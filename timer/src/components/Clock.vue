@@ -17,7 +17,6 @@
             <div class="label"><h2>Seconds</h2></div>
         </div> -->
         
-        <div class="countdown">
             <div class="time-section" id="days">
                 <div class="time-group">
                     <div class="time-segment">
@@ -31,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <p>days</p>
+                <p class="label" >days</p>
             </div>
 
             <div class="time-section" id="hours">
@@ -47,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <p>hours</p>
+                <p class="label">hours</p>
             </div>
 
             <div class="time-section" id="minutes">
@@ -63,9 +62,8 @@
                         </div>
                     </div>
                 </div>
-                <p>minutes</p>
+                <p class="label">minutes</p>
             </div>
-
 
             <div class="time-section" id="seconds">
                 <div class="time-group">
@@ -80,10 +78,9 @@
                         </div>
                     </div>   
                 </div>
-                <p>seconds</p>
+                <p class="label">seconds</p>
             </div>
         </div>
-    </div>
 </template>
 
 <script setup>
@@ -193,9 +190,7 @@ import { computed, onMounted, ref, defineProps } from 'vue';
             displayMinutes.value = format(minutes);
             displayHours.value = format(hours);
             displayDays.value = format(days);
-            shouldFlip(displaySeconds)
-            !shouldFlip(displaySeconds)
-            // !isActive.value
+            
 
 
         }, 1000)

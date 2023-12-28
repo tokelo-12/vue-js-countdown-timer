@@ -1,50 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.container {
-  height: 100vh;
-  width: inherit;
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 375px;
+  font-family: "Red Hat Text", sans-serif;
+  border: 2px solid red;
+  background-color: hsl(234deg, 17%, 12%);
+}
+
+h3 {
+  color: hsl(0deg, 0%, 100%);
+  font-size: x-large;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .clock-container {
   display: flex;
-  justify-content: space-between;
-}
-
-.segment-container {
-  height: 150px;
-  width: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-right: 50px;
-}
-
-.clock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 5px solid black;
   width: inherit;
-  height: 100px;
+  justify-content: space-evenly;
+  margin-top: 60px;
 }
 
-.segment-container:last-child {
-  margin-right: 0;
-}
-
-.countdown {
-  display: flex;
-  gap: 30px;
-  font-family: sans-serif;
+.label {
+  font-size: 10px;
+  color: hsl(237deg, 18%, 59%);
+  margin-top: 12px;
 }
 
 .time-section {
@@ -54,14 +51,14 @@
 
 .time-group {
   display: flex;
-  gap: 10px;
+  width: 65px;
 }
 
 .time-segment {
   display: block;
-  font-size: 100px;
+  font-size: 30px;
   font-weight: 900;
-  width: 100px;
+  width: 100%;
 }
 
 .segment-display {
@@ -78,13 +75,13 @@
 }
 
 .segment-display-top {
-  background-color: #111;
-  color: #eee;
+  background-color: hsl(236deg, 21%, 26%);
+  color: hsl(345deg, 95%, 68%);
   line-height: 1.5;
 }
 
 .segment-display-bottom {
-  background-color: #333;
+  background-color: hsl(236deg, 21%, 30%);
   color: white;
   line-height: 0;
 }
@@ -93,7 +90,7 @@
   position: absolute;
   top: 0;
   height: 100%;
-  width: 100px;
+  width: 100%;
   perspective: 400px;
 }
 
@@ -107,17 +104,17 @@
 .segment-overlay-top {
   top: 0;
   line-height: 1.5;
-  color: #eee;
-  background-color: #111;
+  color: hsl(345deg, 95%, 68%);
+  background-color: hsl(236deg, 21%, 26%);
   transform-origin: bottom;
 }
 
 .segment-overlay-bottom {
   bottom: 0;
   line-height: 0;
-  color: #fff;
-  background-color: #333;
-  border-top: 3px solid black;
+  color: hsl(345deg, 95%, 68%);
+  background-color: hsl(236deg, 21%, 30%);
+  border-top: 1px solid black;
   transform-origin: top;
 }
 

@@ -1,57 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+$GrayishBlue: hsl(237, 18%, 59%);
+$SoftRed: hsl(345, 95%, 68%);
+$White: hsl(0, 0%, 100%);
+$DarkDesaturatedBlue: hsl(236, 21%, 26%);
+$DarkDesaturatedBlue2: hsl(236, 21%, 30%);
+$VeryDarkBlue: hsl(235, 16%, 14%);
+$VeryDarkBlackBlue: hsl(234, 17%, 12%);
+
+
 body{
-    // background-color:hsl(236, 21%, 26%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
 }
+
+
+
 
 .container{
     height: 100vh;
-    width: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 375px;
+
+    font-family: 'Red Hat Text', sans-serif;
+    border:2px solid red;
+    background-color: $VeryDarkBlackBlue;
 }
 
+h3{
+    color: $White;
+    font-size: x-large;
+    text-align: center;
+    text-transform: uppercase;
+  
+}
 
 .clock-container{
     display: flex;
-    // width: 700px;
-    justify-content: space-between;
-}
-
-.segment-container{
-    height: 150px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 50px;
-}
-
-.clock{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid black;
     width: inherit;
-    height: 100px;
+    justify-content: space-evenly;
+    margin-top:60px;
 }
 
-.segment-container:last-child{
-    margin-right: 0;
+.label{
+    font-size: 10px;
+    color: $GrayishBlue;
+    margin-top: 12px;
 }
 
-.countdown{
-    display: flex;
-    gap:30px;
-    font-family: sans-serif;
-}
+
 
 .time-section{
     text-align: center;
@@ -60,14 +68,15 @@ body{
 
 .time-group{
     display: flex;
-    gap: 10px;
+    // gap: 10px;
+    width: 65px;
 }
 
 .time-segment{
     display: block;
-    font-size: 100px;
+    font-size: 30px;
     font-weight: 900;
-    width: 100px;
+    width: 100%;
 }
 
 .segment-display{
@@ -84,13 +93,13 @@ body{
 }
 
 .segment-display-top{
-    background-color: #111;
-    color:#eee;
+    background-color:$DarkDesaturatedBlue;
+    color:$SoftRed;
     line-height: 1.5;
 }
 
 .segment-display-bottom{
-    background-color: #333;
+    background-color: $DarkDesaturatedBlue2;
     color: white;
     line-height: 0;
 }
@@ -99,7 +108,7 @@ body{
     position: absolute;
     top:0;
     height: 100%;
-    width: 100px;
+    width: 100%;
     perspective: 400px;
 }
 
@@ -113,17 +122,17 @@ body{
 .segment-overlay-top{
     top:0;
     line-height: 1.5;
-    color:#eee;
-    background-color: #111;
+    color:$SoftRed;
+    background-color:$DarkDesaturatedBlue;
     transform-origin: bottom;
 }
 
 .segment-overlay-bottom{
     bottom:0;
     line-height: 0;
-    color:#fff;
-    background-color: #333;
-    border-top: 3px solid black;
+    color:$SoftRed;
+    background-color: $DarkDesaturatedBlue2;
+    border-top: 1px solid black;
     transform-origin: top;
 }
 

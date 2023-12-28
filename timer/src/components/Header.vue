@@ -1,3 +1,3 @@
 <template>
-    <h3>We're launching soon</h3>
+    <h3>We're  launching<br>soon</h3>
 </template>
